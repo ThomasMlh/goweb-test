@@ -9,14 +9,19 @@ const getProducts = async () => {
 
 // Display data on table
 const displayProducts = async () => {
+  // Get the table
   const tableBody = document.getElementById("table-body");
 
+  // Fetching data
   const products = await getProducts();
 
+  // ForEach product create a <tr> element into the table
   products.forEach((product) => {
+    // Create and id parameter foreach product
     const productUrl = new URL(`${window.location.origin}/product.html`);
     productUrl.searchParams.append("id", product.id);
 
+    // Create a link
     const productTr = document.createElement("tr");
 
     const productNameTr = document.createElement("td");
@@ -29,6 +34,8 @@ const displayProducts = async () => {
 
     const categoryTr = document.createElement("td");
     const spanCategory = document.createElement("span");
+
+    // Ternary that define the classname through the product's category
     spanCategory.className = `${
       product.category === "jewelery"
         ? "category jewelery"
@@ -48,12 +55,14 @@ const displayProducts = async () => {
     const priceVatTr = document.createElement("td");
     priceVatTr.innerText = `${(product.price * 1.2).toFixed(2)} €`;
 
+    // Append all elements to the tr
     productTr.appendChild(productNameTr);
     productTr.appendChild(productNameTr);
     productTr.appendChild(categoryTr);
     productTr.appendChild(priceTr);
     productTr.appendChild(priceVatTr);
 
+    // Append the tr into the table
     tableBody.appendChild(productTr);
   });
 };

@@ -19,6 +19,7 @@ const getProduct = async () => {
   return data;
 };
 
+// Patch the new price into the db
 const updatePrice = async (product, newPrice) => {
   fetch(`https://fakestoreapi.com/products/${product.id}`, {
     headers: { "Content-Type": "application/json" },
@@ -31,12 +32,20 @@ const updatePrice = async (product, newPrice) => {
     .then((json) => console.log(json));
 };
 
+// Display the product's informations
 const displayProductInfo = async () => {
   const product = await getProduct();
 
+  // If there's no product display and error message
   if (product === null) {
+    // Get the product container
     const productContainer = document.getElementById("product-container");
+
+    // Clear the product container
     productContainer.innerHTML = "";
+
+    // Create all elements for no product found
+
     const titleError = document.createElement("h2");
     titleError.innerText = "Sorry, product not found !";
     titleError.style.color = "#564aff";
@@ -50,9 +59,14 @@ const displayProductInfo = async () => {
     linkReturnHome.href = "index.html";
     linkReturnHome.appendChild(returnHomeButton);
 
+    // Appends all elements
     productContainer.appendChild(titleError);
     productContainer.appendChild(linkReturnHome);
-  } else {
+  }
+  // Else display product's information
+  else {
+    // Get all elements needed by id
+
     const titleProduct = document.getElementById("title-product");
     const description = document.getElementById("product-description");
     const priceWithVat = document.getElementById("price-with-vat");
@@ -60,6 +74,8 @@ const displayProductInfo = async () => {
     const imagePreview = document.getElementById("image-preview");
     const category = document.getElementById("category-title");
     const btnUpdatePrice = document.getElementById("btn-update-product");
+
+    // Display values in each elements
 
     titleProduct.innerText = product.title;
     imagePreview.src = product.image;
@@ -70,6 +86,8 @@ const displayProductInfo = async () => {
     ).toFixed(2)} €`;
 
     category.innerText = product.category;
+
+    // Ternary that define the classname through the product's category
     category.className = `${
       product.category === "jewelery"
         ? "category jewelery"
@@ -80,6 +98,7 @@ const displayProductInfo = async () => {
         : "category electronics"
     }`;
 
+    // This button will run the updatePrice function on click
     btnUpdatePrice.addEventListener("click", (e) => {
       e.preventDefault();
       const myInputValue = parseFloat(inputPrice.value);
@@ -87,6 +106,7 @@ const displayProductInfo = async () => {
       updatePrice(product, myInputValue);
     });
 
+    // Get the current price
     inputPrice.addEventListener("input", (event) => {
       const price = parseFloat(event.target.value);
       priceWithVat.innerText = `Price (including VAT): ${(price * 1.2).toFixed(
