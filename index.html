@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/index.scss" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <title>Circle Products</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <a href="/index.html" id="logo">
+          <div class="container-title">
+            <div class="circle"></div>
+            <h1>
+              Circle <br />
+              Products
+            </h1>
+          </div>
+        </a>
+        <nav id="nav-links">
+          <ul>
+            <li>Dashboard</li>
+            <li>Products management</li>
+            <li>Employees management</li>
+            <li><hr /></li>
+            <li>Logout</li>
+          </ul>
+        </nav>
+        <a href="javascript:void(0);" id="icon"> <i class="fa fa-bars"></i></a>
+      </header>
+      <section id="products-list">
+        <h1>Products management</h1>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th id="product-name">Product Name</th>
+              <th id="category">Category</th>
+              <th id="price">Price</th>
+              <th id="price-vat">Price <span>(including VAT)</span></th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </section>
+    </main>
+    <script src="./index.js" defer></script>
+    <script src="./js/navbar.js" defer></script>
+  </body>
+</html>

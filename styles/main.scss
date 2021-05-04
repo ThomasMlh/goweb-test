@@ -1,0 +1,31 @@
+$base-color: #564aff;
+$men-clothing-color: #ffa846;
+$jewelery-color: #32b436;
+$women-clothing-color: #e74bd2;
+$electronics-color: #357edd;
+$text-color-product: #707070;
+
+// Responsive breakpoints
+$screen-sm-min: 768px;
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-md-min: 992px;
+$screen-sm-max: ($screen-md-min - 1);
+$screen-lg-min: 1200px;
+$screen-md-max: ($screen-lg-min - 1);
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/assets/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto";
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
